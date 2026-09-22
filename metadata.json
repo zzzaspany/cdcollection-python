@@ -1,6 +1,0 @@
-{
-  "name": "CD Collection Manager",
-  "description": "A web application to manage and display your audio CD collection, connected to a local PocketBase database.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
