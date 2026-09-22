@@ -11,6 +11,7 @@ Usage:
 """
 
 import os
+import secrets
 import sys
 import uuid
 import datetime
@@ -24,8 +25,9 @@ except ImportError:
     sys.exit(1)
 
 app = Flask(__name__)
-# Standard secret key for session-based flash notifications
-app.secret_key = "cd_vault_python_secure_secret"
+# Signs the session cookie carrying flash messages. A per-process random key is the safe
+# default; set FLASK_SECRET_KEY to keep flashes alive across a restart.
+app.secret_key = os.environ.get("FLASK_SECRET_KEY") or secrets.token_urlsafe(32)
 
 # Local PocketBase configurations matched to your local device server
 POCKETBASE_URL = os.environ.get("POCKETBASE_URL", "http://127.0.0.1:8090")

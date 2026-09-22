@@ -1,14 +1,14 @@
-# cdcolletion-python.container
+# cdcollection-python.container
 # Podman Quadlet configuration file for running the Flask CD Journal app as a systemd service.
 #
 # Deployment Instructions:
 # 1. To run as a system service:
-#    Copy this file to: /etc/containers/systemd/cdcolletion-python.container
-#    Then run: sudo systemctl daemon-reload && sudo systemctl start cdcolletion-python.service
+#    Copy this file to: /etc/containers/systemd/cdcollection-python.container
+#    Then run: sudo systemctl daemon-reload && sudo systemctl start cdcollection-python.service
 #
 # 2. To run as a rootless user service:
-#    Copy this file to: ~/.config/containers/systemd/cdcolletion-python.container
-#    Then run: systemctl --user daemon-reload && systemctl --user start cdcolletion-python.service
+#    Copy this file to: ~/.config/containers/systemd/cdcollection-python.container
+#    Then run: systemctl --user daemon-reload && systemctl --user start cdcollection-python.service
 
 [Unit]
 Description=CD Journal Python Web Application (PocketBase Client)
@@ -16,7 +16,7 @@ After=network-online.target
 
 [Container]
 # Pull the built container from GitHub Container Registry
-Image=ghcr.io/zzzaspany/cdcolletion-python:latest
+Image=ghcr.io/zzzaspany/cdcollection-python:latest
 
 # Expose port 5000 on the host to port 5000 inside the container
 PublishPort=5000:5000

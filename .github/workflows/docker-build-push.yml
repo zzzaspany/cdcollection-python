@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: zzzaspany/cdcolletion-python
+  IMAGE_NAME: zzzaspany/cdcollection-python
 
 jobs:
   build-and-push:
