@@ -1,0 +1,11 @@
+[tool.ruff]
+line-length = 120
+# Matches the Dockerfile's base image. Ruff otherwise assumes the newest Python and may rewrite
+# syntax the runtime does not have.
+target-version = "py313"
+
+[tool.ruff.lint]
+# Beyond ruff's defaults (E4/E7/E9/F): import sorting, bugbear's correctness checks, and
+# pyupgrade. E501 is absent on purpose — line length belongs to a formatter, and this file embeds
+# a large HTML template.
+select = ["E4", "E7", "E9", "F", "I", "B", "UP"]
