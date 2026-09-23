@@ -4,8 +4,9 @@ These paths had never been exercised. They are also the ones most likely to be w
 they only run when something else is already broken.
 """
 
-import app as app_module
 from conftest import response_with
+
+import app as app_module
 
 
 def test_index_serves_fallback_items_when_pocketbase_is_down(client, offline):

@@ -1,9 +1,9 @@
 """The pure helpers: grading, colours, and the PocketBase URL probe."""
 
 import pytest
+from conftest import response_with
 
 import app as app_module
-from conftest import response_with
 
 
 @pytest.mark.parametrize(

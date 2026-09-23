@@ -4,8 +4,9 @@ That makes these the most important tests here: they pin down exactly which head
 and that no header means no write.
 """
 
-import app as app_module
 from conftest import response_with
+
+import app as app_module
 
 
 def test_no_headers_means_nobody(client):
