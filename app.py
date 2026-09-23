@@ -10,12 +10,13 @@ Usage:
     python app.py
 """
 
+import datetime
 import os
 import secrets
 import sys
 import uuid
-import datetime
-from flask import Flask, render_template_string, request, redirect, url_for, flash
+
+from flask import Flask, flash, redirect, render_template_string, request, url_for
 
 try:
     import requests
@@ -117,8 +118,7 @@ def proxy_pb_file(collection_id, record_id, filename):
             headers["Content-Length"] = response.headers["Content-Length"]
             
         def generate():
-            for chunk in response.iter_content(chunk_size=4096):
-                yield chunk
+            yield from response.iter_content(chunk_size=4096)
                 
         return Response(generate(), status=response.status_code, headers=headers)
     except Exception as e:
@@ -191,18 +191,26 @@ def get_gradient_style(title, author_name):
 
 def get_condition_label(rating):
     """Translates numerical condition ratings to standard Goldmine grading scale"""
-    if rating == 10: return "Mint (M)"
-    if rating == 9: return "Near Mint (NM)"
-    if rating >= 7: return "Very Good (VG)"
-    if rating >= 5: return "Good (G)"
-    if rating >= 3: return "Fair (F)"
+    if rating == 10:
+        return "Mint (M)"
+    if rating == 9:
+        return "Near Mint (NM)"
+    if rating >= 7:
+        return "Very Good (VG)"
+    if rating >= 5:
+        return "Good (G)"
+    if rating >= 3:
+        return "Fair (F)"
     return "Poor (P)"
 
 def get_condition_color(rating):
     """Provides Tailwind CSS class pairs matching quality levels"""
-    if rating >= 9: return "text-emerald-400 bg-emerald-500/10 border-emerald-500/20"
-    if rating >= 7: return "text-teal-400 bg-teal-500/10 border-teal-500/20"
-    if rating >= 5: return "text-amber-400 bg-amber-500/10 border-amber-500/20"
+    if rating >= 9:
+        return "text-emerald-400 bg-emerald-500/10 border-emerald-500/20"
+    if rating >= 7:
+        return "text-teal-400 bg-teal-500/10 border-teal-500/20"
+    if rating >= 5:
+        return "text-amber-400 bg-amber-500/10 border-amber-500/20"
     return "text-rose-400 bg-rose-500/10 border-rose-500/20"
 
 def get_auth_user():
