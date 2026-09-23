@@ -9,3 +9,10 @@ target-version = "py313"
 # pyupgrade. E501 is absent on purpose — line length belongs to a formatter, and this file embeds
 # a large HTML template.
 select = ["E4", "E7", "E9", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+# The tests import `app` from the repository root. `python -m pytest` puts the working directory
+# on sys.path and the `pytest` console script does not, so without this the suite passes locally
+# and fails in CI.
+pythonpath = [".", "tests"]
+testpaths = ["tests"]
