@@ -19,3 +19,19 @@ jobs:
       - uses: astral-sh/ruff-action@v3
         with:
           args: check --output-format github
+
+  test:
+    name: Pytest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          # Matches the Dockerfile's base image.
+          python-version: "3.13"
+          cache: pip
+
+      - run: pip install -r requirements.txt pytest
+
+      - run: pytest -q
