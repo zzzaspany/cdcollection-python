@@ -39,7 +39,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest,enable=${{ github.ref_name == 'main' || github.ref_name == 'master' }}
-            type=raw,value=v0.2,enable=${{ github.ref_name == 'main' || github.ref_name == 'master' }}
+            type=raw,value=v0.3,enable=${{ github.ref_name == 'main' || github.ref_name == 'master' }}
             type=sha,format=short
 
       - name: Build and push Docker image
