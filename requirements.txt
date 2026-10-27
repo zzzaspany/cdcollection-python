@@ -5,4 +5,4 @@ gunicorn>=26.2.0
 # emSign root CAs whose intermediate keys were compromised (GHSA-6q48-6c7w-9gw2). requests only
 # asks for certifi>=2023.5.7, so without this floor a rebuild can resolve straight back to an
 # affected version. Added 2026-10-22; dependabot keeps the floor moving from here.
-certifi>=2026.10.19
+certifi>=2026.10.23
